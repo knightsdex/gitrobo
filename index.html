@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="GitRobo is a Web3-ready developer platform for versioning, testing and deploying robotic systems."
+    />
+    <title>GitRobo | GitHub for Robotics</title>
+    <link rel="icon" type="image/jpeg" href="assets/gitrobott.jpeg" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#hero" aria-label="GitRobo home">
+        <img src="assets/gitrobott.jpeg" alt="" class="brand__mark" />
+        <span>GitRobo</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#overview">Platform</a>
+        <a href="#features">Stack</a>
+        <a href="#process">Process</a>
+        <a href="#architecture">Architecture</a>
+        <!-- <a href="app.html">Product</a> -->
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <!-- <a class="button button--small button--primary" href="app.html"
+        >View Demo</a
+      > -->
+    </header>
+
+    <main>
+      <section class="hero section" id="hero">
+        <div class="hero__content">
+          <p class="eyebrow">GitHub for robotics teams</p>
+          <h1>
+            Version, test and deploy robotic systems from one trusted platform.
+          </h1>
+          <p class="hero__text">
+            GitRobo gives robotics teams a shared workspace for code, hardware
+            configs, simulation workflows, releases and fleet deployment with a
+            verifiable Web3 audit layer.
+          </p>
+          <div class="hero__actions" aria-label="GitRobo actions">
+            <!-- <a class="button button--primary" href="app.html"
+              >Open Product Demo</a
+            > -->
+            <a class="button button--secondary" href="#overview"
+              >Explore Platform</a
+            >
+          </div>
+        </div>
+
+        <div class="hero__visual" aria-label="GitRobo robotic arm logo">
+          <div class="hero__image-shell">
+            <img src="assets/gitrobott.jpeg" alt="GitRobo robotic arm logo" />
+          </div>
+          <div class="repo-panel" aria-label="GitRobo repository preview">
+            <div class="repo-panel__topline">
+              <span>Robotics Release</span>
+              <strong>On-chain proof</strong>
+            </div>
+            <div class="repo-panel__meta">
+              <span>GitRobo Arm</span>
+              <span>v0.8.2</span>
+            </div>
+            <pre><code>runtime:    ros2
+simulation: passed
+target:     lab-arm-01
+audit:      verified</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="intro section" id="overview">
+        <div class="section-label">Platform Vision</div>
+        <div class="intro__copy">
+          <h2>
+            GitRobo is a developer platform built around the way real robot
+            systems ship.
+          </h2>
+          <p>
+            A robot is more than source code. It includes firmware, ROS
+            packages, motion plans, hardware manifests, sensor calibration,
+            simulation results and deployment history. GitRobo brings those
+            moving parts into one versioned, testable and cryptographically
+            verifiable workspace.
+          </p>
+        </div>
+      </section>
+
+      <section class="features section" id="features">
+        <div class="section-heading">
+          <p class="eyebrow">Core Stack</p>
+          <h2>The collaboration layer robotics teams are missing.</h2>
+        </div>
+
+        <div class="feature-grid">
+          <article class="card">
+            <span class="card__index">01</span>
+            <h3>Robot Repositories</h3>
+            <p>
+              Store code, CAD references, ROS packages, hardware configs,
+              calibration files and robot manifests in a single project
+              workspace.
+            </p>
+          </article>
+          <article class="card">
+            <span class="card__index">02</span>
+            <h3>Simulation CI</h3>
+            <p>
+              Run automated simulation checks for movement, collisions, task
+              success, motor limits and regression risk before anything reaches
+              a real robot.
+            </p>
+          </article>
+          <article class="card">
+            <span class="card__index">03</span>
+            <h3>Signed Fleet Releases</h3>
+            <p>
+              Package stable builds, sign releases, deploy to lab or production
+              fleets and keep a verifiable audit trail for every robot action.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="process section" id="process">
+        <div class="section-heading">
+          <p class="eyebrow">Workflow</p>
+          <h2>
+            From robot repo to verified deployment in four controlled steps.
+          </h2>
+        </div>
+
+        <div class="timeline">
+          <article class="step">
+            <span>01</span>
+            <h3>Create Repo</h3>
+            <p>
+              Start a robot project with source code, team access and release
+              rules.
+            </p>
+          </article>
+          <article class="step">
+            <span>02</span>
+            <h3>Define Manifest</h3>
+            <p>
+              Describe runtime, hardware, sensors, simulation engine and
+              deployment target.
+            </p>
+          </article>
+          <article class="step">
+            <span>03</span>
+            <h3>Run Sim CI</h3>
+            <p>
+              Validate motion plans, safety limits and task behavior in
+              automated checks.
+            </p>
+          </article>
+          <article class="step">
+            <span>04</span>
+            <h3>Deploy & Audit</h3>
+            <p>
+              Ship signed releases to robots and record critical events with
+              Web3 proofs.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="architecture section" id="architecture">
+        <div class="section-heading section-heading--split">
+          <div>
+            <p class="eyebrow">Web3 Architecture</p>
+            <h2>A robotics DevOps layer with cryptographic trust built in.</h2>
+          </div>
+          <p>
+            GitRobo keeps daily engineering fast while recording the critical
+            moments: package signatures, robot identity, release approval,
+            GitLawb-native repository refs and deployment proofs.
+          </p>
+        </div>
+
+        <div class="architecture-grid">
+          <article class="architecture-card">
+            <span>01</span>
+            <h3>Git Core</h3>
+            <p>
+              Repository history for robotics code, manifests, calibration data
+              and release artifacts.
+            </p>
+          </article>
+          <article class="architecture-card">
+            <span>02</span>
+            <h3>Simulation Runner</h3>
+            <p>
+              Containerized ROS2, Gazebo or Webots checks triggered by pull
+              requests and release candidates.
+            </p>
+          </article>
+          <article class="architecture-card">
+            <span>03</span>
+            <h3>Fleet Gateway</h3>
+            <p>
+              Controlled rollout channels for lab robots, staging fleets and
+              production hardware.
+            </p>
+          </article>
+          <article class="architecture-card architecture-card--dark">
+            <span>04</span>
+            <h3>Proof Registry</h3>
+            <p>
+              DID-based robot identity, signed releases, artifact hashes and
+              on-chain deployment records.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="gallery section" id="gallery">
+        <div class="section-heading section-heading--split">
+          <div>
+            <p class="eyebrow">Platform Surface</p>
+            <h2>
+              A clean product interface for robot code, simulation and
+              deployment state.
+            </h2>
+          </div>
+          <p>
+            Designed for engineering teams that need clarity: repository state,
+            manifest health, simulation status and signed deployment history at
+            a glance.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <article class="gallery-feature">
+            <div
+              class="product-window"
+              aria-label="GitRobo product interface preview"
+            >
+              <div class="product-window__bar">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="product-window__body">
+                <div class="repo-tree">
+                  <strong>GitRobo Arm</strong>
+                  <span>robot.yml</span>
+                  <span>packages/ros2</span>
+                  <span>simulation/gazebo</span>
+                  <span>releases/v0.8.1</span>
+                </div>
+                <div class="pipeline-list">
+                  <p><strong>Sim CI</strong><span>passed</span></p>
+                  <p><strong>Safety limits</strong><span>verified</span></p>
+                  <p><strong>Release hash</strong><span>0x8fa...21c</span></p>
+                  <p><strong>Fleet target</strong><span>lab-arm-01</span></p>
+                </div>
+              </div>
+            </div>
+            <div class="gallery-feature__caption">
+              <span>Robot Repository</span>
+              <strong>Code, config and releases for every robot</strong>
+            </div>
+          </article>
+          <article class="gallery-card">
+            <span>robot.yml</span>
+            <strong>Standard manifests for hardware and runtime</strong>
+          </article>
+          <article class="gallery-card">
+            <span>Simulation CI</span>
+            <strong>Automated safety checks before deployment</strong>
+          </article>
+          <article class="gallery-card">
+            <span>Web3 Audit</span>
+            <strong>Signed releases, DID identity and proof history</strong>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="contact section" id="contact">
+      <div>
+        <p class="eyebrow">Official Channels</p>
+        <h2>
+          Follow GitRobo as we build the collaboration layer for robotics teams.
+        </h2>
+      </div>
+      <div class="contact__panel">
+        <a
+          class="social-link"
+          href="https://x.com/GitRoboHQ"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span>X</span>
+          <strong>@GitRoboHQ</strong>
+        </a>
+        <a
+          class="social-link"
+          href="https://github.com/GitRoboHQ"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span>GitHub</span>
+          <strong>GitRoboHQ</strong>
+        </a>
+      </div>
+    </footer>
+  </body>
+</html>
