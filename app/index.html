@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="GitRobo product prototype: robot repositories, manifests, simulation CI, signed releases and Web3 audit proofs."
+    />
+    <title>GitRobo App | Robotics DevOps Platform</title>
+    <link rel="icon" type="image/jpeg" href="assets/gitrobott.jpeg" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <link rel="stylesheet" href="app.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="GitRobo workspace navigation">
+        <a class="brand" href="index.html" aria-label="Back to GitRobo landing">
+          <img src="assets/gitrobott.jpeg" alt="" class="brand__mark" />
+          <span>GitRobo</span>
+        </a>
+
+        <nav class="sidebar__nav">
+          <a href="#dashboard" class="is-active">Dashboard</a>
+          <a href="#repository">Repository</a>
+          <a href="#manifest">Manifest</a>
+          <a href="#simulation">Simulation CI</a>
+          <a href="#release">Release</a>
+          <a href="#audit">Audit Proof</a>
+          <a href="#gitlawb">GitLawb</a>
+        </nav>
+
+        <div class="sidebar__status">
+          <span>Repo Layer</span>
+          <strong id="registry-mode">Mock Registry</strong>
+          <small id="registry-detail">Local proof adapter connected</small>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Robotics DevOps Workspace</p>
+            <h1>GitRobo Arm Control</h1>
+          </div>
+          <div class="topbar__actions">
+            <a href="index.html" class="ghost-button">Landing</a>
+            <button class="ghost-button" type="button" id="connect-wallet">Connect Wallet</button>
+            <button class="ghost-button danger-button is-hidden" type="button" id="disconnect-wallet" hidden aria-hidden="true" disabled>Disconnect</button>
+            <button class="primary-button" type="button" id="create-release">Create Release</button>
+          </div>
+        </header>
+
+        <section class="hero-panel" id="dashboard">
+          <div>
+            <p class="eyebrow">Project Health</p>
+            <h2>One command center for code, simulation, deployment and proof history.</h2>
+            <p>
+              GitRobo turns a robotics project into a versioned operational system:
+              every manifest, simulation result, release and robot deployment is easy
+              to inspect, approve and verify.
+            </p>
+          </div>
+          <div class="health-grid" aria-label="Project health metrics">
+            <article>
+              <span>CI Status</span>
+              <strong id="metric-ci">Passed</strong>
+            </article>
+            <article>
+              <span>Release</span>
+              <strong id="metric-release">v0.8.1</strong>
+            </article>
+            <article>
+              <span>Fleet</span>
+              <strong id="metric-fleet">3 Robots</strong>
+            </article>
+            <article>
+              <span>Proofs</span>
+              <strong id="metric-proofs">18 Records</strong>
+            </article>
+          </div>
+        </section>
+
+        <section class="grid two-column">
+          <article class="panel" id="repository">
+            <div class="panel__heading">
+              <p class="eyebrow">Robot Repository</p>
+              <h2>Source, packages and hardware state in one repo.</h2>
+            </div>
+            <div class="repo-table">
+              <p><span>robot.yml</span><strong id="manifest-state">updated 4 min ago</strong></p>
+              <p><span>packages/ros2-control</span><strong>12 modules</strong></p>
+              <p><span>simulation/gazebo-world</span><strong>ready</strong></p>
+              <p><span>calibration/joints.json</span><strong>verified</strong></p>
+              <p><span id="repo-release-name">releases/v0.8.1</span><strong id="repo-release-state">signed</strong></p>
+            </div>
+          </article>
+
+          <article class="panel panel--code" id="manifest">
+            <div class="panel__heading panel__heading--split">
+              <div>
+                <p class="eyebrow">robot.yml</p>
+                <h2>Standard manifest for robotic systems.</h2>
+              </div>
+              <button class="light-button" type="button" id="validate-manifest">Validate</button>
+            </div>
+            <textarea class="manifest-editor" id="manifest-editor" spellcheck="false">name: gitrobo-arm-v1
+type: robotic-arm
+runtime: ros2
+hardware:
+  joints: 6
+  controller: stm32
+  sensors:
+    - camera
+    - force-sensor
+simulation:
+  engine: gazebo
+  scenario: pick-and-place
+deploy:
+  target: lab-arm-01
+audit:
+  registry: on-chain</textarea>
+            <p class="inline-status" id="manifest-feedback">Manifest is valid and ready for simulation.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="simulation">
+          <div class="panel__heading panel__heading--split">
+            <div>
+              <p class="eyebrow">Simulation CI</p>
+              <h2>Automated checks before a release touches hardware.</h2>
+            </div>
+            <div class="panel-actions">
+              <span class="status-pill" id="ci-status">All checks passed</span>
+              <button class="ghost-button" type="button" id="run-simulation">Run Simulation</button>
+            </div>
+          </div>
+          <div class="pipeline">
+            <article data-check="build">
+              <span>01</span>
+              <h3>Build ROS2 Package</h3>
+              <p>Compiled in 42s</p>
+            </article>
+            <article data-check="scenario">
+              <span>02</span>
+              <h3>Run Gazebo Scenario</h3>
+              <p>Pick-and-place completed</p>
+            </article>
+            <article data-check="safety">
+              <span>03</span>
+              <h3>Check Safety Limits</h3>
+              <p>No collision or torque breach</p>
+            </article>
+            <article data-check="artifact">
+              <span>04</span>
+              <h3>Prepare Release</h3>
+              <p>Artifact hash generated</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="grid two-column">
+          <article class="panel" id="release">
+            <div class="panel__heading">
+              <p class="eyebrow">Signed Release</p>
+              <h2>Deployable builds with wallet-backed approval.</h2>
+            </div>
+            <div class="release-card">
+              <span id="release-label">Release v0.8.1</span>
+              <strong id="release-hash">0x8fa2...21c9</strong>
+              <p id="release-note">Signed by robotics-lead.eth and approved for lab fleet rollout.</p>
+              <div class="signature-box">
+                <span>Signer</span>
+                <strong id="wallet-identity">robotics-lead.eth</strong>
+                <span>Artifact</span>
+                <strong id="artifact-hash">0xartifact...demo</strong>
+                <span>Signature</span>
+                <strong id="release-signature">0xsig...demo</strong>
+              </div>
+              <button class="primary-button" type="button" id="deploy-release">Deploy to Lab Fleet</button>
+            </div>
+          </article>
+
+          <article class="panel" id="audit">
+            <div class="panel__heading">
+              <p class="eyebrow">Audit Proof</p>
+              <h2>Every critical action leaves a verifiable record.</h2>
+            </div>
+            <div class="audit-list">
+              <p><span>Robot DID</span><strong>did:gitrobo:arm-01</strong></p>
+              <p><span>Release Signature</span><strong id="audit-signature">verified</strong></p>
+              <p><span>Deployment Target</span><strong id="audit-target">lab-arm-01</strong></p>
+              <p><span>Last Event</span><strong id="audit-event">release signed</strong></p>
+              <p><span>Registry Tx</span><strong id="audit-tx">0x71e...44ab</strong></p>
+            </div>
+          </article>
+        </section>
+
+        <section class="panel" id="gitlawb">
+          <div class="panel__heading panel__heading--split">
+            <div>
+              <p class="eyebrow">GitLawb Native</p>
+              <h2>GitLawb is the primary repository layer for robot release state.</h2>
+            </div>
+            <div class="panel-actions">
+              <span class="status-pill" id="gitlawb-status">Ready</span>
+              <button class="ghost-button" type="button" id="mirror-gitlawb">Sync Ref</button>
+            </div>
+          </div>
+          <div class="gitlawb-grid">
+            <div class="gitlawb-copy">
+              <p>
+                GitRobo now writes release state through a GitLawb-native repo provider.
+                Local fallback stays available for demos, but the product model is built
+                around repo DID, ref CID and signed release certificates.
+              </p>
+              <a class="ghost-button" id="gitlawb-link" href="https://gitlawb.com/node/repos/z6MktmKxVdA3a5hNb9Up4bA8tkC8ZEpnSwze2TKWmjgLWxpx/gitrobo-arm-v1" target="_blank" rel="noreferrer">GitLawb Native Profile</a>
+            </div>
+            <div class="gitlawb-list">
+              <p><span>Mode</span><strong id="gitlawb-mode">GitLawb Native</strong></p>
+              <p><span>Repo DID</span><strong id="gitlawb-repo">did:gitlawb:z6Mk...</strong></p>
+              <p><span>Latest Ref CID</span><strong id="gitlawb-cid">bafy...</strong></p>
+              <p><span>Ref Certificate</span><strong id="gitlawb-certificate">glref_...</strong></p>
+              <p><span>Last Sync</span><strong id="gitlawb-event">GitLawb native layer ready</strong></p>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="ledger">
+          <div class="panel__heading panel__heading--split">
+            <div>
+              <p class="eyebrow">Proof Ledger</p>
+              <h2>Append-only trust events for the robot lifecycle.</h2>
+            </div>
+            <span class="status-pill">EIP-191 compatible signing flow</span>
+          </div>
+          <div class="proof-ledger" id="proof-ledger" aria-label="Proof ledger events"></div>
+        </section>
+      </main>
+    </div>
+
+    <aside class="proof-drawer" id="proof-drawer" aria-label="Proof detail" aria-hidden="true">
+      <button class="drawer-close" type="button" id="close-proof-drawer">Close</button>
+      <p class="eyebrow">Proof Detail</p>
+      <h2 id="drawer-title">Proof event</h2>
+      <div class="drawer-list">
+        <p><span>Type</span><strong id="drawer-type">release</strong></p>
+        <p><span>Mode</span><strong id="drawer-mode">mock</strong></p>
+        <p><span>Transaction</span><strong id="drawer-tx">0x0000...0000</strong></p>
+        <p><span>Timestamp</span><strong id="drawer-time">--</strong></p>
+      </div>
+      <p id="drawer-detail">Proof detail will appear here.</p>
+      <a class="ghost-button" id="drawer-explorer" href="#" target="_blank" rel="noreferrer">View Explorer</a>
+    </aside>
+  </body>
+</html>
